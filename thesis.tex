@@ -1,0 +1,132 @@
+%
+% you should only have one "documentclass" line.  the following lines
+% are samples that give various options.  the nofrontmatter option is
+% nice because it suppresses the title and signature pages when you want
+% to focus only on the main body of the thesis
+%
+% Friday April 10 2010 Ray Hylock <ray-hylock@uiowa.edu>
+% documentclass options:
+%   abstractpage            if you want to add an internal abstract (optional)
+%   ackpage                 if you would like to add an acknowledgements page (optional)
+%   algorithms              if you want a list of algorithms (optional)
+%   appendix                if you have an appendix (optional)
+%   copyrightpage           if you wish to copyright your thesis (optional)
+%   dedicationpage          if you wish to make a dedication (optional)
+%   epigraphpage            if you would like to add an epigraph to the beginning of your thesis (optional)
+%   examples                if you want a list of examples (this uses the ntheorem package)
+%   exampleslemmas          if you want a combined list of examples and lemmas (this uses the ntheorem package) (optional)
+%   examplestheorems        if you want a combined list of examples and theorems (this uses the ntheorem package) (optional)
+%   exampleslemmastheorems  if you want a combined list of examples, lemmas, and theorems (this uses the ntheorem package) (optional)
+%   figures                 if you have any figures (this is required if you have even one figure)
+%   lemmas                  if you want a list of lemmas (this uses the ntheorem package) (optional)
+%   lemmastheorems          if you want a combined list of lemmas and theorems (this uses the ntheorem package) (optional)
+%   nofrontmatter           suppresses the title and signiture pages for working on the body
+%   tables                  if you have any tables (this is required if you have even one table)
+%   theorems                if you want a list of theorems (this uses the ntheorem package) (optional)
+%   phd                     if phd student; this will add the doctoral abstract (mandatory for PhD and DMA thesis candidates only)
+%
+
+% full options
+%\documentclass[phd,abstractpage,copyrightpage,dedicationpage,epigraphpage,ackpage,figures,tables,lemmas,appendix]{uithesis}
+
+% common options
+%\documentclass[phd,dedicationpage,ackpage,figures,tables,appendix]{uithesis}
+
+% example
+\documentclass[phd,appendix]{uithesis}
+
+%=============================================================================
+% User packages
+%=============================================================================
+\usepackage{bookmark}		% [recommended] for PDF bookmark generation
+\usepackage{blindtext} 	% example text generation
+
+%=============================================================================
+% prelude
+%=============================================================================
+
+\title{Format Test for UI Thesis}
+\author{John Doe}
+\dept{Computer Science}
+
+% multipleSupervisors=true for two advisors
+\setboolean{multipleSupervisors}{false}
+\advisor{Associate Professor George Washington}
+% for multiple advisors; change <value> to line up the names
+%\setboolean{multipleSupervisors}{true}
+%\advisor{Advisor 1\\\hspace{<value>mm}Advisor 2...}
+%
+% edit the names below to have your committee members names appear
+% on the signature page.  memberOne should be your advisor.
+%
+\memberOne{George Washington}
+\memberTwo{Member Two}
+\memberThree{Member Three}
+\memberFour{Member Four}
+\memberFive{Member Five}
+\submitdate{July 2012}
+\copyrightyear{2012}
+
+\Abstract{
+\blindtext
+}
+
+%\dedication{Dedication here (optional)}
+
+%\epigraph{Epigraph here (optional)}
+
+%\acknowledgements{Acknowledgements here (optional)}
+
+\begin{document}
+
+\frontmatter
+
+%=============================================================================
+\chapter{The First Chapter}
+%=============================================================================
+\blindtext
+
+\section{The First Section}
+Hello~\cite{arigon_handling_2008}.
+
+\section{The Second Section}
+\blindtext
+
+
+%=============================================================================
+\chapter{The Second Chapter}
+%=============================================================================
+\blindtext
+
+\section{The Third Section}
+\blindtext
+
+
+%=============================================================================
+\appendix
+%=============================================================================
+
+%=============================================================================
+\chapter{Sample Appendix}
+
+\section{Appendix One}
+\blindtext
+
+\section{Appendix Two}
+\blindtext
+
+%=============================================================================
+\chapter{Another Appendix}
+
+\section{Appendix Three}
+\blindtext
+
+
+%=============================================================================
+% bibliography
+%=============================================================================
+\interlinepenalty=10000	% prevents bib items from splitting across pages
+\bibliographystyle{uithesis}
+\bibliography{thesis}
+
+\end{document}
