@@ -5,6 +5,10 @@
 \NeedsTeXFormat{LaTeX2e}[1995/06/01]
 \ProvidesClass{uithesis}[1999/04/16 Univ. of Iowa Thesis Class]
 % ChangeLog
+% December 19, 2013 Andrew Reynolds AJR (andrew.j.reynolds@gmail.com)
+%    * Fixed appendix line in table of contents.  
+%      Made phd abstract optional, since it is no longer required.
+%
 % December 31, 2012 Duckki Oe (duckki-oe@uiowa.edu)
 %    * Updated this sytle conforming the July 2012 standard.
 %      I made some formatting changes in TOC, figure, and
@@ -113,6 +117,7 @@
 %
 % ------------------------- initial code ------------------------------
 \RequirePackage{ifthen} \newboolean{phd} % This is a Ph.D. thesis
+\newboolean{phdabstract} % AJR : Include an abstract with Ph.D. thesis
 \newboolean{nofrontmatter} % Skip everything before the index
 \newboolean{figures} % There are figures (list of figures)
 \newboolean{tables} % There are tables (list of tables)
@@ -134,6 +139,7 @@
 % --------------------- declaration of options ------------------------
 % if passed in the thesis.tex document class declaration, then true
 \DeclareOption{phd}{\setboolean{phd}{true}}
+\DeclareOption{phdabstract}{\setboolean{phdabstract}{true}}
 \DeclareOption{nofrontmatter}{\setboolean{nofrontmatter}{true}}
 \DeclareOption{figures}{\setboolean{figures}{true}}
 \DeclareOption{tables}{\setboolean{tables}{true}}
@@ -507,13 +513,15 @@
 \let\savedAppendix=\appendix
 \renewcommand{\appendix}{\savedAppendix
 \addtocontents{toc}{\protect\vspace{\li}}	% by Duckki
-\addcontentsline{toc}{head}{APPENDIX}
+%\addcontentsline{toc}{head}{APPENDIX}
+\addcontentsline{toc}{blankhead}{APPENDIX}	% AJR fix
 }
 
 \newcommand{\frontmatter}{
   \ifthenelse{\boolean{nofrontmatter}}{}%
   {
-     \ifthenelse{\boolean{phd}}{\doctoralabstract}{}%
+     %\ifthenelse{\boolean{phd}}{\doctoralabstract}{}   % AJR : no longer require abstract with phd thesis
+     \ifthenelse{\boolean{phdabstract}}{\doctoralabstract}{} 
      \uitprefixpg
      \singlespace
      \titlepg
